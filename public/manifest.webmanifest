@@ -1,6 +1,6 @@
 {
-  "name": "HYO 효도어",
-  "short_name": "HYO",
+  "name": "HYO(효도어)",
+  "short_name": "HYO(효도어)",
   "description": "요즘 내가 부모님께 효도하는 가장 쉽고 빠른 방법",
   "start_url": "./",
   "scope": "./",
