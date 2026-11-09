@@ -1,0 +1,65 @@
+/* 기준 390×845 캡처 좌표 (pt)
+   로고 200×58 @ (95, 339) · 문구 16px Medium 2줄 · 버튼 320×48 @ y 696 · 로그인 링크 중심 y 774 */
+.splash {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--white);
+}
+
+.splash__brand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(339 / 845 * 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash__copy {
+  margin-top: 17px;
+  margin-left: 13px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  text-align: center;
+  color: var(--brand-navy);
+  animation: splash-rise 0.5s var(--ease-out) 1.5s both;
+}
+
+.splash__actions {
+  position: absolute;
+  left: 35px;
+  right: 35px;
+  bottom: calc(101px + env(safe-area-inset-bottom));
+}
+
+.splash__start.btn--flowing {
+  animation:
+    splash-fade 0.5s var(--ease-out) 2.5s both,
+    btn-flow 2.4s ease-in-out 3.4s infinite alternate;
+}
+
+.splash__login {
+  position: absolute;
+  left: -35px;
+  right: -35px;
+  top: calc(100% + 18px);
+  height: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--brand-navy);
+  animation: splash-fade 0.4s var(--ease-out) 2.9s both;
+}
+
+@keyframes splash-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes splash-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

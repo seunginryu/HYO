@@ -1,0 +1,71 @@
+/* 체크박스 */
+.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.chk input,
+.radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chk__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  color: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.chk.is-on .chk__box {
+  background: var(--brand-blue);
+  color: var(--white);
+}
+.chk__label {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #686868;
+}
+
+/* 라디오 */
+.radio {
+  display: inline-flex;
+  cursor: pointer;
+}
+.radio__dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #D9D9D9;
+  background: var(--white);
+  transition: border 0.15s;
+}
+.radio.is-on .radio__dot {
+  border: 7px solid var(--brand-blue);
+}
+
+/* 선택지 버튼 */
+.optbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid #E9E9E9;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 400;
+  color: #A4A4A4;
+  transition: border-color 0.15s, color 0.15s;
+}
+.optbtn.is-on {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  font-weight: 600;
+}

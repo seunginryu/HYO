@@ -1,0 +1,117 @@
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+@import './tokens.css';
+
+/* 페이퍼로지 7 Bold (SIL OFL 1.1, Freesentation/paperlogy). KS X 1001 한글 2,350자 + 영문·기호만 담은 서브셋 */
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('../assets/fonts/paperlogy-7bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  background: #e9e9e9;
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  letter-spacing: var(--tracking);
+  color: var(--text-strong);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* 앱 화면: 모바일은 꽉 차게, 데스크톱은 가운데 390px */
+.app-frame {
+  position: relative;
+  width: 100%;
+  max-width: var(--screen-w);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+@media (min-width: 391px) {
+  .app-frame {
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  font: inherit;
+  font-size: 16px; /* 사파리 자동 확대 방지 */
+  letter-spacing: inherit;
+  color: inherit;
+  border: 0;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 화면 폭이 390 이하(휴대폰·좁은 창)일 때 고정 바를 양옆으로 2px 더 늘려
+   배율(150% 등)에서 반 픽셀 틈으로 뒤 배경이 비치지 않게 */
+@media (max-width: 390px) {
+  .app-frame .hdr,
+  .app-frame .home-hdr,
+  .app-frame .bnav {
+    left: -2px;
+    right: -2px;
+    max-width: none;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}

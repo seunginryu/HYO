@@ -1,0 +1,80 @@
+/* 기준 캡처(pt): 헤더 하단 117 · 제목 글자 159~178 · 첫 라벨 236 · 입력 263/360/457 (48h)
+   계정 생성 529~581 · 또는 612 · 카카오 644 · 구글 696 · 애플 748 (40h, 간격 12) */
+.signup {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--white);
+}
+
+.signup__body {
+  padding: 0 var(--pad-x) calc(40px + env(safe-area-inset-bottom));
+}
+
+.signup__title {
+  text-align: center;
+  padding-top: 37px;
+}
+.signup__title h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--text-strong);
+}
+.signup__title p {
+  margin-top: 4.5px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--text-sub);
+}
+
+.signup__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24.5px;
+}
+
+.signup__error {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #E5484D;
+}
+
+.signup__submit {
+  margin-top: 23px;
+}
+
+.signup__or {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+  height: 20px;
+}
+.signup__or::before,
+.signup__or::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 23.5px);
+  height: 1px;
+  background: var(--divider);
+}
+.signup__or::before { left: 0; }
+.signup__or::after { right: 0; }
+.signup__or span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+
+.signup__social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 21px;
+}

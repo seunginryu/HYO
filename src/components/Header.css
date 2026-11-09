@@ -1,0 +1,48 @@
+/* 상단 고정: 화면 폭(최대 390) 가운데 */
+.hdr-space {
+  height: calc(var(--status-h) + var(--header-h));
+}
+.hdr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-width: var(--screen-w);
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: var(--bar-shadow);
+}
+.hdr__status {
+  height: var(--status-h);
+}
+.hdr__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--header-h);
+  padding: 0 var(--pad-x);
+}
+.hdr__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 40px;
+  margin-left: -1.5px;
+  margin-right: 7.5px;
+  margin-top: -2px;
+  color: var(--icon-back);
+}
+.hdr__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text-header);
+}
+.hdr__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}

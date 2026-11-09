@@ -1,0 +1,420 @@
+/* 기준 캡처(pt) — B(최초 홈)
+   헤더 0~117 · 배너 117~271 · 통계 카드 240~353.5 · 카드 x 16~374 · 탭바 상단 1003 */
+.home {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--white);
+  padding-bottom: calc(var(--bnav-h) + env(safe-area-inset-bottom));
+}
+
+/* ── 헤더 ── */
+.home-hdr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-width: var(--screen-w);
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}
+.home-hdr__row {
+  position: relative;
+  height: var(--header-h);
+}
+.home-hdr__logo {
+  position: absolute;
+  left: 36px;
+  top: 19.5px;
+  display: block;
+}
+.home-hdr__bell {
+  position: absolute;
+  left: 331px;
+  top: 7px;
+  display: block;
+}
+
+/* ── 배너 ── */
+.home-banner {
+  position: relative;
+  height: 154px;
+  padding: 31px 0 0 34px;
+  color: var(--white);
+  /* Figma 배너 그라디언트를 1px 띠로 뽑아 세로로 늘림 (캐릭터 이미지 배경과 이음새 없이) */
+  background-color: #277BD1;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.home-banner__hello {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+.home-banner__hello strong {
+  font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.home-banner__msg {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+.home-banner__char {
+  position: absolute;
+  left: 213px;
+  top: 23px;
+}
+
+/* ── 본문 ── */
+.home-body {
+  position: relative;
+  margin-top: -31px;
+  padding: 0 var(--pad-x) 49px;
+}
+
+/* 통계 */
+.home-stats__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 55.5px;
+  padding: 0 26px 0 25px;
+}
+.home-stats__sep {
+  height: 1px;
+  margin: 0 8px;
+  background: var(--box-stroke);
+}
+.home-stats__label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+}
+.home-stats__label b {
+  font-weight: 700;
+}
+.home-stats__value {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+.home-stats__value em {
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+
+/* 이용 방법 안내 */
+.home-guide {
+  height: 122px;
+  margin-top: 16.5px;
+  padding: 19px 23.5px 0;
+}
+.home-guide__title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--text-strong);
+}
+.home-guide__title span {
+  color: var(--brand-blue);
+}
+.home-guide__desc {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-strong);
+}
+.home-guide__link {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 91px;
+  margin: 0 auto;
+  width: max-content;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.home-guide__close {
+  position: absolute;
+  right: 7px;
+  top: 3px;
+}
+
+/* 시작이 반이죠! */
+.home-start {
+  margin-top: 41.5px;
+  padding: 146px 19px 11px;
+  text-align: center;
+}
+.home-start__basket {
+  left: 72.5px;
+  top: -30px;
+}
+.home-start__title {
+  font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--text-strong);
+}
+.home-start__desc {
+  margin-top: 8.5px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21.5px;
+  color: #747474;
+}
+.home-start__desc b {
+  font-weight: 700;
+}
+.home-start__btn {
+  margin-top: 20.5px;
+  font-size: 15px;
+}
+
+/* 이용 전: 바구니 */
+.home-basket {
+  margin-top: 41.5px;
+  padding: 124.5px 19px 13px;
+  text-align: center;
+}
+.home-basket__img {
+  position: absolute;
+  left: 73px;
+  top: -27px;
+  animation: float 2s ease-in-out infinite alternate;
+}
+.home-basket__desc {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #747474;
+}
+.home-basket__desc b {
+  font-weight: 700;
+}
+.home-basket__btn {
+  margin-top: 12px;
+  font-size: 15px;
+}
+.home-basket + .home-guide {
+  margin-top: 20.5px;
+}
+
+/* 이용 후: 진행 카드 */
+.home-progress {
+  margin-top: 21px;
+  height: 201.5px;
+  /* 내용 묶음(글·그림·단계바, 가로 20~332)을 카드 가운데로: 전체를 오른쪽으로 3 */
+  padding: 20px 23px 0 29px;
+}
+.home-progress__title {
+  font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000;
+}
+.home-progress__title span {
+  color: var(--brand-blue);
+}
+.home-progress__desc {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19.5px;
+  color: var(--brand-navy);
+}
+.home-progress__img {
+  position: absolute;
+  left: 222px;
+  top: 16px;
+  width: 112px;
+  height: 84px;
+  /* 그림 배경(거의 흰색)이 카드와 섞이게 */
+  mix-blend-mode: multiply;
+  isolation: isolate;
+}
+.home-progress__img img {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+/* 2.4초 반복: 이불 들기 → 밀어 넣기 → 다시 들기 */
+.home-progress__push {
+  animation: progress-push 2.4s ease-in-out infinite;
+}
+@keyframes progress-push {
+  0%, 38% { opacity: 0; }
+  48%, 88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* 포장 중: 상자 접기. 데모에서 포장 단계가 2.5초라 열린 상자를 짧게 보여주고 바로 접음 */
+.home-progress__push--box {
+  animation-name: progress-box;
+}
+@keyframes progress-box {
+  0%, 15% { opacity: 0; }
+  25%, 85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* 배송 시작: 트럭 흔들림 + 뒤쪽 바람 선 (오른쪽으로 흐름, 연한 회색) */
+.home-truck__wind {
+  position: absolute;
+  left: 105px;
+  height: 2px;
+  border-radius: 1px;
+  background: #E4E4E4;
+  opacity: 0;
+  animation: truck-wind 0.9s ease-out infinite;
+}
+.home-truck__wind--1 { top: 33px; width: 10px; }
+.home-truck__wind--2 { top: 46px; width: 13px; animation-delay: 0.3s; }
+.home-truck__wind--3 { top: 59px; width: 9px; animation-delay: 0.6s; }
+@keyframes truck-wind {
+  0% { opacity: 0; transform: translateX(-6px); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(6px); }
+}
+.home-truck .home-truck__body {
+  position: absolute;
+  left: 2px;
+  top: 20px;
+  width: 102px;
+  height: 51px;
+  transform-origin: 30% 100%;
+  animation: truck-bob 0.4s ease-in-out infinite alternate;
+}
+@keyframes truck-bob {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-0.5px) rotate(-0.3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-truck__body, .home-truck__wind { animation: none; }
+  .home-truck__wind { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-progress__push { animation: none; opacity: 1; }
+}
+.home-progress__bar {
+  position: absolute;
+  left: 22px;
+  top: 107.5px;
+}
+.home-progress__more {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44px;
+  border-top: 1px solid var(--box-stroke);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brand-navy);
+}
+.home-progress + .home-guide {
+  margin-top: 21px;
+}
+
+/* 효도어 스페이스 */
+.home-space {
+  margin-top: 37px;
+}
+.home-space__head {
+  position: relative;
+  padding-left: 8px;
+}
+.home-space__head h2 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #000;
+}
+.home-space__head p {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #969696;
+}
+.home-space__more {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.home-space__list {
+  display: flex;
+  gap: 16px;
+  margin: 19px calc(-1 * var(--pad-x)) 0;
+  padding: 0 var(--pad-x);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.home-space__list::-webkit-scrollbar {
+  display: none;
+}
+.home-space__card {
+  position: relative;
+  flex: none;
+  width: 171px;
+  height: 148px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  scroll-snap-align: start;
+  text-align: left;
+}
+.home-space__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 아래쪽을 어둡게 (캡처에서 잰 값: 40%부터 시작해 바닥에서 약 50%) */
+.home-space__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.26) 82%, rgba(0, 0, 0, 0.5) 100%);
+}
+.home-space__text {
+  position: absolute;
+  z-index: 1;
+  left: 11px;
+  top: 99px;
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+}
+.home-space__sub {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+}
+.home-space__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+/* 둥둥 떠다니기 (바구니·대기 캐릭터 공통) */
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}

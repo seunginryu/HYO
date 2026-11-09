@@ -1,0 +1,48 @@
+/* Figma 스타일에서 확인한 값 (private → to claude) */
+:root {
+  /* Color styles */
+  --brand-blue: #277BD1;
+  --brand-navy: #1E3A5E;
+  --brand-lime: #DAE633;
+  --box-stroke: #EDEDED;
+  --bg: #F6F6F6;
+  --white: #FFFFFF;
+
+  /* 캡처에서 읽은 보조 색 */
+  --text-strong: #1A1A1A;   /* 큰 제목 */
+  --text-header: #393939;   /* 헤더 제목 */
+  --text-label: #333333;    /* 입력 라벨 */
+  --text-sub: #666666;      /* 보조 문구 */
+  --text-muted: #797979;    /* 구분선 텍스트 */
+  --text-placeholder: #B0B0B0;
+  --icon-back: #525252;
+  --divider: #E0E0E0;
+  --kakao: #F9DC02;
+  --kakao-symbol: #482C2B;
+  --apple: #171717;
+  --google-stroke: #E3E3E3;
+
+  /* Effect styles (Figma) */
+  --shadow: 8px 4px 10px 1px rgba(0, 0, 0, 0.15);
+  --bar-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  --box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+  --button-shadow: 0 0 25px 0 rgba(39, 123, 209, 0.25);
+
+  /* Layout */
+  --screen-w: 390px;
+  --pad-x: 16px;
+  --radius: 4px;
+  --status-h: 59px;   /* 캡처의 상태바 영역 (헤더 제목 중심 y=88 기준) */
+  --header-h: 58px;
+  --bnav-h: 78px;
+  --tracking: -0.03em;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 실제 휴대폰: 상태바 높이는 기기 safe-area 값을 따름
+   (사파리 브라우저에선 0 → 최소 12px, 홈 화면 앱에선 47~59px) */
+@media (pointer: coarse) {
+  :root {
+    --status-h: max(env(safe-area-inset-top), 12px);
+  }
+}

@@ -1,0 +1,36 @@
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  box-shadow: var(--box-shadow);
+  transition: filter 0.15s, transform 0.15s;
+}
+.social:active {
+  transform: scale(0.985);
+  filter: brightness(0.96);
+}
+.social--kakao {
+  background: var(--kakao);
+  color: #000;
+}
+.social--google {
+  background: var(--white);
+  color: #000;
+  border: 1px solid var(--google-stroke);
+}
+.social--apple {
+  background: var(--apple);
+  color: var(--white);
+  gap: 14px;
+}
+.social__icon {
+  flex: none;
+}

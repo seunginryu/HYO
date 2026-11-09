@@ -1,0 +1,22 @@
+.avatar {
+  position: relative;
+  width: 68px;
+  height: 68px;
+}
+.avatar > svg {
+  display: block;
+}
+/* 배지: 지름 31.5, 중심이 아바타 기준 (63.5, 57.5) */
+.avatar__badge {
+  position: absolute;
+  left: 47.75px;
+  top: 41.75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31.5px;
+  height: 31.5px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}

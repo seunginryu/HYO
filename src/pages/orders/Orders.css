@@ -1,0 +1,152 @@
+/* 기준(pt): 배경 #F6F6F6 · 탭 149 · 제목 글자 223 · 보조 248.5 · 첫 카드 287 */
+.orders {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  padding-bottom: calc(var(--bnav-h) + 24px + env(safe-area-inset-bottom));
+}
+.orders__body {
+  padding: 32px var(--pad-x) 0;
+}
+.orders__title {
+  margin-top: 30px;
+  padding-left: 13.5px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  color: var(--text-label);
+}
+.orders__sub {
+  margin-top: 4px;
+  padding-left: 13.5px;
+  font-size: 14.5px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: #797979;
+}
+.orders__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 25px;
+}
+.orders__empty {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #9A9A9A;
+}
+.orders__month h3 {
+  margin-top: 16px;
+  padding-left: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--brand-blue);
+}
+.orders__month .orders__list {
+  margin-top: 12px;
+}
+
+/* ── D-1-1 주문 상세 ── 기준(pt): 카드 139 / 254 / 393.5, 사진 669~875.5, 버튼 899 */
+.odetail {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  padding-bottom: calc(var(--bnav-h) + 24px + env(safe-area-inset-bottom));
+}
+.odetail__body {
+  padding: 22px var(--pad-x) 0;
+}
+.odetail__card {
+  position: relative;
+  padding: 11.5px 17.5px 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+}
+.odetail__card + .odetail__card {
+  margin-top: 18px;
+}
+.odetail__card--date { height: 97px; }
+.odetail__card--to { height: 122px; }
+.odetail__card--dial { height: 257.5px; }
+.odetail__k {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  color: var(--brand-blue);
+}
+.odetail__v {
+  margin-top: 11px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-label);
+}
+.odetail__s {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #979797;
+}
+.odetail__s--dark { color: var(--text-label); }
+.odetail__s--blue { margin-top: 7px; color: var(--brand-blue); }
+.odetail__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 229px;
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 18px;
+  color: #9D9D9D;
+}
+.odetail__photo {
+  position: relative;
+  height: 206.5px;
+  margin-top: 17.5px;
+  overflow: hidden;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+}
+.odetail__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: photo-in 0.35s ease-out both;
+}
+.odetail__ph {
+  width: 100%;
+  height: 100%;
+}
+@keyframes photo-in {
+  from { opacity: 0; }
+}
+.odetail__share {
+  margin-top: 23.5px;
+}
+
+.orders__month:first-of-type h3 {
+  margin-top: 24px;
+}
+
+.odetail__photoBtn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+/* 사진 팝업 */
+.ovl--photo {
+  align-items: center;
+  padding: 24px var(--pad-x);
+}
+.photo-pop {
+  max-width: min(100%, calc(var(--screen-w) - 32px));
+  max-height: calc(100dvh - 120px);
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  animation: modal-in 0.25s var(--ease-out) both;
+}

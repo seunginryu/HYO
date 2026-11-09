@@ -1,0 +1,22 @@
+/* 기준(pt): 탭 y 149~189 (40), 폭 114, 간격 8 */
+.segtabs {
+  display: grid;
+  gap: 8px;
+}
+.segtabs__tab {
+  height: 40px;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #9A9A9A;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.segtabs__tab.is-on {
+  background: #D4E5F6;
+  box-shadow: inset 0 0 0 1px var(--brand-blue);
+  font-weight: 700;
+  color: var(--brand-blue);
+}

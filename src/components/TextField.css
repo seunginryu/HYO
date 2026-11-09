@@ -1,0 +1,45 @@
+.tf {
+  display: flex;
+  flex-direction: column;
+}
+.tf__label {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--text-label);
+  margin-bottom: 11px;
+  padding-left: 8px;
+}
+.tf__box {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  background: var(--white);
+  border: 1px solid var(--box-stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  transition: border-color 0.15s;
+}
+.tf__box:focus-within {
+  border-color: var(--brand-blue);
+}
+.tf__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 17px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-strong);
+  letter-spacing: 0;
+}
+.tf__input::placeholder {
+  font-size: 15px;
+  color: var(--text-placeholder);
+  opacity: 1;
+}
+.tf__trailing {
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+}

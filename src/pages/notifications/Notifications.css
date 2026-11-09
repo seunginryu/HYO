@@ -1,0 +1,82 @@
+/* F 알림 — 기준 캡처(pt). 헤더 아래 117 */
+.nt {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  padding-bottom: calc(var(--bnav-h) + 24px + env(safe-area-inset-bottom));
+}
+.nt__body {
+  padding: 0 24px 0 28px;
+}
+
+/* 묶음 제목: 글자 위 = 위 구분선 + 38.5 */
+.nt__group {
+  padding-top: 36px;
+}
+.nt__day {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+  color: var(--brand-blue);
+}
+.nt__list {
+  list-style: none;
+  margin: 10.5px 0 0;
+  padding: 0;
+}
+
+/* 항목: 구분선 → 원 16.5, 원 43, 원 → 구분선 15.5 */
+.nt__item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 16.5px 0 15.5px;
+  text-align: left;
+  /* 0.5pt 구분선 (border는 1px로 반올림돼 그림자로 그림) */
+  box-shadow: inset 0 -0.5px 0 #B9B9B9;
+}
+.nt__icon {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border: 1px solid var(--brand-blue);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--brand-blue);
+}
+.nt__dot {
+  position: absolute;
+  left: 31.75px;
+  top: 0.25px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-lime);
+}
+.nt__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 14.5px;
+  min-width: 0;
+}
+.nt__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: #333;
+}
+.nt__sub {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: #626262;
+}
+.nt__group + .nt__group {
+  padding-top: 37px;
+}

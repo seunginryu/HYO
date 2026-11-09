@@ -1,0 +1,50 @@
+/* 기준(pt): 배경 #F6F6F6 (헤더 아래 117~) · 라벨 글자 상단 143 · 진행 바 170~174 (4칸, 간격 8.5)
+   하단 버튼 692~744 (화면 아래에서 101) */
+.apply {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  padding-bottom: calc(153px + 16px + env(safe-area-inset-bottom));
+}
+.apply__progress {
+  padding: 22px var(--pad-x) 0;
+}
+.apply__label {
+  height: 20px;
+  padding-left: 8.5px;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+  color: #686868;
+}
+.apply__label.is-blue {
+  color: var(--brand-blue);
+}
+.apply__bars {
+  display: flex;
+  gap: 8.5px;
+  margin-top: 11px;
+}
+.apply__bars span {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #D9D9D9;
+  transition: background 0.4s;
+}
+.apply__bars span.is-done {
+  background: var(--brand-blue);
+}
+.apply__body {
+  padding: 0 var(--pad-x);
+}
+.apply__cta {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  z-index: 25;
+  max-width: calc(var(--screen-w) - 32px);
+  margin: 0 auto;
+  bottom: calc(101px + max(0px, env(safe-area-inset-bottom) - 18px));
+}

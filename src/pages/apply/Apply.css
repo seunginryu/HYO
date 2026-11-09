@@ -1,0 +1,598 @@
+/* C 세탁 신청 — 기준 캡처 좌표(pt). 본문 시작 = 174 (진행 바 아래), 좌우 16 */
+
+.apply-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #E5484D;
+}
+
+/* ── C-1 ── */
+.c1 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 21px;
+}
+.c1 .tf + .tf {
+  margin-top: 10.5px;
+}
+.c1 .tf__label {
+  margin-top: 1.5px;
+  margin-bottom: 11.5px;
+}
+.c1 .tf__label {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.tf--46 .tf__box {
+  height: 46px;
+}
+.c1 .c1__detail {
+  margin-top: 10px;
+}
+.c1__saved {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+.c1__label {
+  margin-top: 20.5px;
+  padding-left: 8.5px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 20px;
+  color: var(--text-label);
+}
+.c1__chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 11px;
+}
+.c1__chips .optbtn {
+  height: 44.5px;
+}
+.c1__note {
+  margin-top: 5.5px;
+  padding-left: 8.5px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: #626262;
+}
+
+/* ── C-2 ── */
+.c2 {
+  text-align: center;
+}
+.c2__who {
+  height: 80px;
+  margin-top: 36px;
+  padding-top: 15.5px;
+  border-radius: var(--radius);
+  background: var(--box-stroke);
+}
+.c2__name {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--brand-navy);
+}
+.c2__phone {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+  color: var(--brand-blue);
+}
+.c2__desc {
+  margin-top: 26.5px;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.015em;
+  color: #626262;
+}
+.c2__ask {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.025em;
+  color: var(--brand-blue);
+}
+.c2__opts {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 30.5px;
+}
+.c2__opts .optbtn {
+  height: 50px;
+  border-color: var(--box-stroke);
+  box-shadow: var(--box-shadow);
+  color: var(--brand-navy);
+}
+.c2__opts .optbtn.is-on {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+
+/* C-2-1 모달 내용 (모달 안쪽 상단 기준) */
+.c21 {
+  position: relative;
+  padding-top: 185px;
+  text-align: center;
+}
+.c21__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  color: var(--brand-blue);
+}
+.c21__desc {
+  margin-top: 7px;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  color: #626262;
+}
+.c21__call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  margin-top: 19px;
+  border-top: 1px solid #D9D9D9;
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--brand-blue);
+  cursor: default;
+  user-select: none;
+}
+
+/* ── C-3 ── */
+.c3 {
+  padding-top: 34px;
+}
+.c3__head {
+  padding-left: 15px;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--text-label);
+}
+.c3__sub {
+  margin-top: 11px;
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  color: #626262;
+}
+.c3__box {
+  position: relative;
+  height: 241px;
+  margin-top: 25px;
+  padding-top: 155px;
+  border-radius: var(--radius);
+  background: var(--box-stroke);
+  text-align: center;
+}
+.c3--arrived .c3__box {
+  margin-top: 17px;
+}
+.c3__boxTitle {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: var(--brand-blue);
+}
+.c3__boxDesc {
+  margin-top: 9.5px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  color: #626262;
+}
+.c3__q {
+  margin-top: 19px;
+  text-align: center;
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: var(--text-label);
+}
+.c3__qs {
+  margin-top: 2.5px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: #626262;
+}
+.c3__home {
+  display: block;
+  margin: 19.5px auto 0;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.c3__letter {
+  margin-top: 22px;
+}
+
+/* 부모님 응답 열람하기 카드 (C-3-5, C-4) */
+.resp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 66px;
+  margin-top: 18px;
+  padding-left: 17.5px;
+  background: var(--white);
+  border: 1px solid var(--box-stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  text-align: left;
+}
+.resp-card__title {
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 19px;
+  color: var(--brand-navy);
+}
+.resp-card__sub {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.resp-card__arrow {
+  position: absolute;
+  right: 19px;
+  top: 50%;
+  margin-top: -11px;
+}
+
+/* 바텀시트 공통 */
+.sheet__title {
+  font-size: 20.5px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--brand-blue);
+}
+.sheet__desc {
+  margin-top: 14.5px;
+  font-size: 14.5px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  color: #626262;
+}
+.sheet__btn {
+  margin-top: 24px;
+}
+
+/* C-3-1 편지지 */
+.sheet-paper {
+  padding: 34px 0 0 14.5px;
+}
+.sheet-paper .sheet__desc {
+  margin-top: 11px;
+}
+.sheet-paper .sheet__btn {
+  margin-left: -14.5px;
+  width: calc(100% + 14.5px);
+}
+.sheet-paper__list {
+  display: grid;
+  grid-template-columns: repeat(3, 104px);
+  gap: 8px;
+  margin-top: 26.5px;
+}
+.sheet-paper__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sheet-paper__thumb {
+  display: block;
+  width: 104px;
+  height: 60.5px;
+  overflow: hidden;
+  border-radius: 1px;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+}
+.sheet-paper__thumb img {
+  width: 108.65px;
+  max-width: none;
+  margin: -2.32px 0 0 -2.32px;
+}
+.sheet-paper__item.is-on .sheet-paper__thumb {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px var(--brand-blue);
+}
+.sheet-paper__label {
+  margin-top: 9px;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.sheet-paper__item .radio {
+  margin-top: 6.5px;
+}
+
+/* C-3-2 편지 쓰기 */
+.sheet-write {
+  padding-top: 43.5px;
+}
+.sheet-write .sheet__title,
+.sheet-write .sheet__desc {
+  padding-left: 14.5px;
+}
+.sheet-write .sheet__desc {
+  margin-top: 5px;
+  font-size: 15px;
+}
+.sheet-write__area {
+  position: relative;
+  height: 220px;
+  margin-top: 21.5px;
+  border: 1px solid #D9D9D9;
+  border-radius: var(--radius);
+}
+.sheet-write__area textarea {
+  width: 100%;
+  height: 100%;
+  padding: 18px 20.5px 60px;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.sheet-write__area textarea::placeholder {
+  font-size: 17px;
+  color: #BCBCBC;
+}
+.sheet-write__photo {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.sheet-write__cam {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+}
+.sheet-write .sheet__btn {
+  margin-top: 14px;
+}
+
+/* 응답 요약 */
+.sheet-resp {
+  padding: 29px 14.5px 8px;
+}
+.sheet-resp__list {
+  margin-top: 18px;
+}
+.sheet-resp__list dt {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600; /* C-4 카드 소제목과 같게 */
+  color: var(--brand-blue);
+}
+.sheet-resp__list dd {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 500; /* C-4 카드 내용과 같게 */
+  color: var(--text-label);
+}
+
+/* ── C-4 ── */
+.c4 {
+  padding-top: 36px;
+}
+.c4__head {
+  padding-left: 14.5px;
+  font-size: 24.5px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--text-label);
+}
+.c4__sub {
+  margin-top: 10.5px;
+  padding-left: 14.5px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.c4__card {
+  margin-top: 15.5px;
+  padding: 13px 17px 18px;
+}
+.c4__row + .c4__row {
+  padding-top: 17px;
+}
+.c4__row:not(:last-child) {
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--divider);
+}
+.c4__k {
+  padding-left: 8.5px;
+  font-size: 14px;
+  font-weight: 600; /* 사용자 요청: 소제목 600 */
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--brand-blue);
+}
+.c4__v {
+  margin-top: 7px;
+  padding-left: 8.5px;
+  font-size: 16px;
+  font-weight: 500; /* 사용자 요청: 한 단계 얇게 (600 → 500) */
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.c4 .resp-card {
+  margin-top: 9.5px;
+}
+
+/* ── C-4-1 ── */
+.c41 {
+  padding-top: 34px;
+}
+.c41__cost {
+  padding: 17.5px 18.5px 12px 21.5px;
+}
+.c41__title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--brand-navy);
+}
+.c41__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  margin-top: 15px;
+  font-size: 15.5px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.c41__line:first-of-type {
+  margin-top: 24px;
+}
+.c41__line b,
+.c41__total b {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brand-navy);
+}
+.c41__sep {
+  height: 2px;
+  margin: 15px 0 0 -3px;
+  background: #D9D9D9;
+}
+.c41__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15.5px;
+  font-size: 15px;
+  letter-spacing: 0;
+  color: #626262;
+}
+.c41__total b {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--brand-blue);
+}
+.c41__payinfo {
+  margin-top: 20px;
+  padding: 17.5px 16px 15px;
+}
+.c41__payhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9px 0 10px;
+  margin-left: -2px;
+}
+.c41__change {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.c41__card {
+  height: 86px;
+  margin-top: 18px;
+  padding: 15px 16.5px 0;
+  border-radius: var(--radius);
+  background: var(--brand-lime);
+}
+.c41__cardName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--brand-navy);
+}
+.c41__cardNum {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0;
+  word-spacing: 1.2px;
+  color: var(--brand-navy);
+}
+.c41__agree {
+  margin-top: 29.5px;
+  padding-left: 12px;
+}
+.c41__agree.is-shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* ── C-4-2 ── */
+.c42 {
+  position: relative;
+  padding-top: 318px;
+  text-align: center;
+}
+.c42__title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--text-label);
+}
+.c42__desc {
+  margin-top: 27px;
+  font-size: 16.7px;
+  line-height: 21.5px;
+  letter-spacing: 0;
+  color: #626262;
+}
+
+.c41__cost .c41__title {
+  padding-left: 2.5px;
+}

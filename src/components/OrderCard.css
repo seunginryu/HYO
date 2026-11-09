@@ -1,0 +1,98 @@
+/* 기준(pt, D-1-1): 카드 287 시작, 이름 글자 +20.5 / x+22, 주소 +48, 도착 +73 */
+.ocard {
+  position: relative;
+  padding: 16.5px 12px 12px 21px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+}
+.ocard__name {
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-label);
+}
+.ocard__addr {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 17px;
+  color: var(--text-label);
+}
+.ocard__eta {
+  margin-top: 7px;
+  font-size: 13.5px;
+  line-height: 18px;
+  color: var(--brand-blue);
+}
+.ocard__applyStep {
+  margin-top: 7.5px;
+  padding-left: 1px;
+  font-size: 12.5px;
+  line-height: 16px;
+  color: #686868;
+}
+.ocard__bars {
+  display: flex;
+  gap: 8px;
+  margin: 9px 0 0 -3px;
+  padding-right: 9px;
+}
+.ocard__bars span {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #D9D9D9;
+}
+.ocard__bars span.is-done {
+  background: var(--brand-blue);
+}
+.ocard__wait {
+  margin-top: 9px;
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 18px;
+  color: var(--brand-blue);
+}
+.ocard__stepbar {
+  margin: 14px 0 0 3px;
+}
+.ocard__btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0 0 -8px;
+}
+.ocard__btns.is-single {
+  grid-template-columns: 1fr;
+}
+.ocard__btn {
+  height: 36px;
+  border: 1px solid #B2B2B2;
+  border-radius: var(--radius);
+  background: var(--white);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #626262;
+}
+.ocard__btn.is-blue {
+  border-color: var(--brand-blue);
+  font-weight: 700;
+  color: var(--brand-blue);
+}
+.ocard__btn[aria-disabled] {
+  cursor: default;
+}
+
+.ocard--requesting .ocard__btns {
+  margin-top: 13.5px;
+}
+.ocard--accepted .ocard__btns {
+  margin-top: 18px;
+}
+.ocard--done .ocard__btns {
+  margin-top: 10.5px;
+}
+
+.ocard--requesting {
+  padding-bottom: 12.5px;
+}

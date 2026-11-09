@@ -1,0 +1,48 @@
+/* 기준(pt): 탭바 상단 1003 · 아이콘 중심 y +22 · 활성 원 48px(위로 8px 돌출) · 라벨 12px, 글자 상단 +48.5
+   열 중심 61.5 / 152 / 241.5 / 330 */
+.bnav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  max-width: var(--screen-w);
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.03);
+  padding-bottom: max(0px, calc(env(safe-area-inset-bottom) - 18px));
+}
+.bnav__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: var(--bnav-h);
+  padding: 0 16px 0 17px;
+}
+.bnav__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bnav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 32px;
+  margin-top: 6px;
+}
+.bnav__item.is-active .bnav__icon img {
+  /* 원형 아이콘은 탭바 위로 8px 튀어나옴 */
+  transform: translateY(-6px);
+}
+.bnav__label {
+  margin-top: 9px;
+  font-size: 12px; /* 사용자 요청: 11 → 12 */
+  font-weight: 500;
+  line-height: 14px;
+  color: #B2B2B2;
+}
+.bnav__item.is-active .bnav__label {
+  color: var(--brand-blue);
+}

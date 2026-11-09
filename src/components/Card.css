@@ -1,0 +1,16 @@
+.card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--box-stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+}
+
+.close-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: var(--icon-back);
+}

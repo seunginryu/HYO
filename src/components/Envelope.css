@@ -1,0 +1,87 @@
+/* 편지 봉투 358×208 (Figma G-2) */
+.env {
+  --env: var(--brand-blue);
+  /* 심볼: 블루·라임 봉투는 네이비 30%, 네이비 봉투는 라임 20%를 겹친 색 */
+  --env-sym: #2467AF;
+  --env-text: var(--white);
+  position: relative;
+  width: 358px;
+  height: 208px;
+  flex: none;
+}
+.env--lime {
+  --env: var(--brand-lime);
+  --env-sym: #A2B240;
+  --env-text: var(--brand-navy);
+}
+.env--navy {
+  --env: var(--brand-navy);
+  --env-sym: #445C55;
+  --env-text: var(--white);
+}
+
+.env__back,
+.env__front,
+.env__face,
+.env__flap,
+.env__text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 358px;
+  height: 208px;
+}
+.env__back {
+  border-radius: 4px;
+  background: var(--env);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+}
+.env__front {
+  opacity: 0;
+  overflow: visible;
+}
+.env__face {
+  overflow: hidden;
+  border-radius: 4px;
+}
+.env__symbol {
+  position: absolute;
+  left: 179px;
+  top: 47px;
+}
+.env__date,
+.env__label {
+  position: absolute;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--env-text);
+  white-space: nowrap;
+}
+.env__date {
+  left: 25px;
+  top: 15px;
+  transition: top 0.4s ease;
+}
+.env__date--bottom {
+  top: 172px;
+}
+.env__label {
+  right: 28px;
+  top: 172px;
+}
+.env__flap {
+  overflow: visible;
+  transform-origin: 50% 0;
+}
+
+/* 편지지가 봉투 밖으로 나올 때 봉투 아래로는 안 보이게 자름 */
+.env__paperClip {
+  position: absolute;
+  left: 0;
+  top: -420px;
+  width: 358px;
+  height: 628px;
+  overflow: hidden;
+  pointer-events: none;
+}
