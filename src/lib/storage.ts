@@ -80,6 +80,9 @@ export const storage = {
   setParents: (p: Parent[]) => write(KEY.parents, p),
 
   /** 로그인·가입 직후: 주문/신청/편지/안내 닫음 기록을 비워 최초 홈부터 */
+  /** 데이터 초기화: 계정·주문·편지·설정 모두 */
+  resetAll: () => kv.clearAll(),
+
   resetActivity: () => {
     for (const k of [KEY.orders, KEY.guideClosed, 'hyo.applyDraft', 'hyo.letters', 'hyo.notiRead', 'hyo.notiLive']) remove(k)
   },

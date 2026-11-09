@@ -1,13 +1,14 @@
 // 앱 데이터 보관소.
-// PERSIST = false: 메모리에만 저장 → 새로고침하면 처음 상태로 초기화 (데모용, 현재 설정)
-// PERSIST = true : 브라우저 localStorage에 저장 → 새로고침해도 유지
-const PERSIST = false
+// PERSIST = true : 브라우저 localStorage에 저장 → 앱을 껐다 켜도 유지 (현재 설정, 사용자 요청)
+// PERSIST = false: 메모리에만 저장 → 새로고침하면 처음 상태로 초기화
+// 초기화는 마이페이지 > 내 정보 수정 > 데이터 초기화(암호)에서
+const PERSIST = true
 
 const mem = new Map<string, string>()
 
 export const kv = {
   get(key: string): string | null {
-    if (!PERSIST) return mem.get(key) ?? null
+    if (!PERSIST || mem.has(key)) return mem.get(key) ?? null
     try {
       return localStorage.getItem(key)
     } catch {
@@ -19,15 +20,30 @@ export const kv = {
       mem.set(key, value)
       return
     }
-    localStorage.setItem(key, value)
+    try {
+      localStorage.setItem(key, value)
+      mem.delete(key)
+    } catch {
+      // 저장소가 가득 차면 이번 실행 동안만 메모리에 보관 (앱이 멈추지 않게)
+      mem.set(key, value)
+    }
   },
   remove(key: string) {
-    if (!PERSIST) {
-      mem.delete(key)
-      return
-    }
+    mem.delete(key)
+    if (!PERSIST) return
     try {
       localStorage.removeItem(key)
+    } catch {
+      /* ignore */
+    }
+  },
+  /** 앱 데이터 전부 지우기 (hyo.* 키) */
+  clearAll() {
+    mem.clear()
+    try {
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith('hyo.'))
+        .forEach((k) => localStorage.removeItem(k))
     } catch {
       /* ignore */
     }

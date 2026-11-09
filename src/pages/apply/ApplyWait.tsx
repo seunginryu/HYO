@@ -1,3 +1,4 @@
+import { shrinkImage } from '../../lib/image'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ApplyLayout } from '../../components/ApplyLayout'
@@ -85,9 +86,12 @@ export default function ApplyWait() {
 
   const pickPhoto = (f?: File) => {
     if (!f) return
-    const r = new FileReader()
-    r.onload = () => setPhoto(String(r.result))
-    r.readAsDataURL(f)
+    // 저장 용량 때문에 줄여서 보관 (비율 유지). 실패하면 원본 그대로
+    shrinkImage(f).then(setPhoto, () => {
+      const r = new FileReader()
+      r.onload = () => setPhoto(String(r.result))
+      r.readAsDataURL(f)
+    })
   }
 
   const res = demoResponse(d)

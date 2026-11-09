@@ -10,9 +10,10 @@ const DEMO_NAME = '김효도'
 export default function Splash() {
   const navigate = useNavigate()
   // 데모: 로그인·회원가입 없이 데모 계정으로 바로 최초 홈
+  // 데모: 로그인 없이 시작. 저장된 데이터가 있으면 그대로 이어서 (초기화는 내 정보 수정 > 데이터 초기화)
   const start = () => {
-    storage.setUser({ name: DEMO_NAME, email: 'demo@hyodoer.app', provider: 'email', joinedAt: new Date().toISOString() })
-    storage.resetActivity()
+    if (!storage.getUser())
+      storage.setUser({ name: DEMO_NAME, email: 'demo@hyodoer.app', provider: 'email', joinedAt: new Date().toISOString() })
     navigate('/home', { replace: true })
   }
   return (

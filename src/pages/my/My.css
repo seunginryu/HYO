@@ -256,3 +256,60 @@
 .my__fields .tf__trailing {
   padding-right: 18.5px;
 }
+
+/* 데이터 초기화 (로그아웃 아래) */
+.my__reset {
+  height: 50px;
+  margin-top: 10px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  font-size: 15px;
+  font-weight: 600;
+  color: #9A9A9A;
+}
+.reset-pop {
+  padding: 34px 22px 22px;
+  text-align: center;
+}
+.reset-pop__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.reset-pop__desc {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #747474;
+}
+.reset-pop__input {
+  width: 100%;
+  height: 48px;
+  margin-top: 18px;
+  padding: 0 14px;
+  border: 1px solid var(--box-stroke);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-size: 16px; /* 16 미만이면 사파리가 확대 */
+  color: var(--text-strong);
+  outline: none;
+}
+.reset-pop__input:focus {
+  border-color: var(--brand-blue);
+}
+.reset-pop__input.is-error {
+  border-color: #EF5743;
+}
+.reset-pop__error {
+  min-height: 18px;
+  margin-top: 6px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 18px;
+  color: #EF5743;
+}
+.reset-pop__btn {
+  width: 100%;
+  margin-top: 8px;
+}
