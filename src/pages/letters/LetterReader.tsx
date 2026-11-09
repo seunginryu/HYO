@@ -25,6 +25,16 @@ export function LetterReader({ letter, start, onClosed }: { letter: BoxLetter; s
     setFrom({ dx: start.x - (r.left + r.width / 2), dy: start.y - (r.top + r.height / 2 + CENTER_DY) })
   }, [start])
 
+  // 열람 중엔 뒤 화면 스크롤 잠금
+  useEffect(() => {
+    const b = document.body.style
+    const prev = b.overflow
+    b.overflow = 'hidden'
+    return () => {
+      b.overflow = prev
+    }
+  }, [])
+
   useEffect(() => {
     let alive = true
     ;(async () => {

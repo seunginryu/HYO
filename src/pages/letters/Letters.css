@@ -160,6 +160,15 @@
   transition-duration: 0.35s;
 }
 
+/* 열람 중 봉투 층은 터치를 받지 않음 (투명해진 뒤에도 편지지 위를 덮어 스크롤을 가로채던 문제) */
+.lr .env__back,
+.lr .env__front,
+.lr .env__face,
+.lr .env__flap,
+.lr .env__text {
+  pointer-events: none;
+}
+
 /* 봉투 층: 뒤 0 · 편지지 2 · 앞주머니 3 · 심볼 4 · 뚜껑 5(열리면 1) · 글자 6 */
 .lr .env__back {
   z-index: 0;
@@ -239,6 +248,9 @@
   height: 100%;
   padding: 28px 24px;
   overflow-y: auto;
+  overscroll-behavior: contain; /* 끝까지 스크롤해도 뒤 화면이 따라 움직이지 않게 */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   opacity: 0;
   transition: opacity 0.2s;
   pointer-events: auto;
