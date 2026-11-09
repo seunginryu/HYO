@@ -61,6 +61,7 @@ export default function OrderDetail() {
             </svg>
           )}
         </div>
+        {photo && <p className="odetail__photoCap">사진을 누르면 확대해서 볼 수 있습니다.</p>}
         <Button className="odetail__share">부모님께 공유하기</Button>
       </div>
       <BottomNav active="apply" />
