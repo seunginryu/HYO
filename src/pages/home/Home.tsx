@@ -77,9 +77,24 @@ export default function Home() {
 
   const homeStep = inProgress ? toHomeStep(inProgress.step) : 0
 
-  // 데모: 신청 완료 후 홈에서 3초 뒤 '세탁 중' → 3초 뒤 '포장' → 2.5초 뒤 '배송 시작'
+  // 데모: 신청 완료 후 홈에서 3초 뒤 '세탁 중' → 3초 뒤 '포장' → 2.5초 뒤 '배송 시작' → 5초 뒤 배송 완료(바구니 카드)
   useEffect(() => {
-    if (!inProgress || inProgress.step >= 4) return
+    if (!inProgress) return
+    // 배송 시작(4)을 5초 보여준 뒤 배송 완료 → 진행 카드 대신 (빈) 바구니 카드
+    if (inProgress.step >= 4) {
+      const t = setTimeout(() => {
+        const now = new Date()
+        storage.setOrders(
+          storage.getOrders().map((o) =>
+            o.id === inProgress.id
+              ? { ...o, status: 'done', arriveAt: now.toISOString(), asUntil: new Date(now.getTime() + 7 * 86_400_000).toISOString() }
+              : o,
+          ),
+        )
+        setVersion((v) => v + 1)
+      }, 5000)
+      return () => clearTimeout(t)
+    }
     const next = (inProgress.step < 2 ? 2 : inProgress.step + 1) as OrderStep
     // 포장 중(3)은 2.5초 보여준 뒤 배송 시작(4)으로
     const wait = next === 4 ? 2500 : 3000
