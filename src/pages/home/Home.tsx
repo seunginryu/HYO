@@ -184,11 +184,20 @@ export default function Home() {
                 style={{ top: BASKET_BOTTOM - basket.h, left: (356 - basket.w) / 2 }}
                 alt=""
               />
-              <p className="home-basket__desc">
-                마지막으로 <b>효도한 지 {daysSince > 30 ? '한 달' : `${daysSince}일`}</b>이 지났어요.
-                <br />
-                오랜만에 빨래 해드리는 거 어때요?
-              </p>
+              {daysSince === 0 ? (
+                // 오늘 배송 완료된 날
+                <p className="home-basket__desc">
+                  <b>오늘 효도 완료!</b>
+                  <br />
+                  다음 빨래도 맡겨주세요.
+                </p>
+              ) : (
+                <p className="home-basket__desc">
+                  마지막으로 <b>효도한 지 {daysSince > 30 ? '한 달' : `${daysSince}일`}</b>이 지났어요.
+                  <br />
+                  오랜만에 빨래 해드리는 거 어때요?
+                </p>
+              )}
               <Button variant="blueGradient" size="md" className="home-basket__btn" onClick={goApply}>
                 세탁 신청하기
               </Button>
