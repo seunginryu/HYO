@@ -254,6 +254,13 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
+  /* 바구니처럼 둥둥 (장면 안의 전환·트럭 흔들림은 그대로).
+     위로 뜨면 모자가 통계 카드에 닿아서 아래쪽으로 6px 오르내림 */
+  animation: scene-float 2s ease-in-out infinite alternate;
+}
+@keyframes scene-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(6px); }
 }
 .home-scene img {
   position: absolute;
@@ -327,7 +334,7 @@
   100% { opacity: 0; transform: translateX(8px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-scene img, .home-truck__wind { animation: none; }
+  .home-scene, .home-scene img, .home-truck__wind { animation: none; }
   .home-scene__a { opacity: 0; }
   .home-truck__wind { opacity: 1; }
 }
