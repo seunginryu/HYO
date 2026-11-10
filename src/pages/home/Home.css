@@ -278,30 +278,30 @@
 .home-scene__b {
   mix-blend-mode: plus-lighter;
 }
-/* 세탁 중 (3.2초 반복): 이불 들기(a) ⇄ 세탁기에 넣기(b), 전환 0.5초 */
+/* 세탁 중 (3.2초 반복): 이불 들기(a) ⇄ 세탁기에 넣기(b), 전환 약 0.3초 */
 .home-scene--wash .home-scene__a { animation: wash-a 3.2s linear infinite; }
 .home-scene--wash .home-scene__b { animation: wash-b 3.2s linear infinite; }
 @keyframes wash-a {
-  0%, 38% { opacity: 1; animation-timing-function: ease-in-out; }
-  54%, 84% { opacity: 0; animation-timing-function: ease-in-out; }
+  0%, 41% { opacity: 1; animation-timing-function: ease-in-out; }
+  50%, 91% { opacity: 0; animation-timing-function: ease-in-out; }
   100% { opacity: 1; }
 }
 @keyframes wash-b {
-  0%, 38% { opacity: 0; animation-timing-function: ease-in-out; }
-  54%, 84% { opacity: 1; animation-timing-function: ease-in-out; }
+  0%, 41% { opacity: 0; animation-timing-function: ease-in-out; }
+  50%, 91% { opacity: 1; animation-timing-function: ease-in-out; }
   100% { opacity: 0; }
 }
 /* 포장 중 (2.4초 반복): 열린 상자(a)를 짧게 → 닫힌 상자(b). 데모의 포장 단계가 2.5초라 일찍 닫음 */
 .home-scene--box .home-scene__a { animation: box-a 2.4s linear infinite; }
 .home-scene--box .home-scene__b { animation: box-b 2.4s linear infinite; }
 @keyframes box-a {
-  0%, 6% { opacity: 1; animation-timing-function: ease-in-out; }
-  26%, 82% { opacity: 0; animation-timing-function: ease-in-out; }
+  0%, 8% { opacity: 1; animation-timing-function: ease-in-out; }
+  20%, 88% { opacity: 0; animation-timing-function: ease-in-out; }
   100% { opacity: 1; }
 }
 @keyframes box-b {
-  0%, 6% { opacity: 0; animation-timing-function: ease-in-out; }
-  26%, 82% { opacity: 1; animation-timing-function: ease-in-out; }
+  0%, 8% { opacity: 0; animation-timing-function: ease-in-out; }
+  20%, 88% { opacity: 1; animation-timing-function: ease-in-out; }
   100% { opacity: 0; }
 }
 /* 배송 중: 트럭 살짝 흔들림 + 뒤쪽 연한 바람 선 (트럭은 왼쪽을 봄 → 바람은 오른쪽으로) */
