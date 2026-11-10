@@ -39,7 +39,8 @@ export default function ApplyForm() {
     setUseSaved(on)
     if (!on) return
     const p = storage.getParents()[0]
-    if (p) update({ parentName: p.name, phone: p.phone, zip: p.zip, address: p.address })
+    // 배송지(주소)만 채움. 성함·번호는 직접 입력
+    if (p) update({ zip: p.zip, address: p.address })
   }
 
   const toggleItem = (it: ItemOption) =>
@@ -64,7 +65,7 @@ export default function ApplyForm() {
         <TextField className="tf--46 c1__detail" placeholder="상세주소" value={d.address} onChange={(e) => update({ address: e.target.value })} />
 
         <div className="c1__saved">
-          <Checkbox checked={useSaved} onChange={loadSaved}>저장한 부모님 정보 불러오기</Checkbox>
+          <Checkbox checked={useSaved} onChange={loadSaved}>저장한 배송지 불러오기</Checkbox>
         </div>
 
         <p className="c1__label">세탁물 종류(복수 선택 가능)</p>
