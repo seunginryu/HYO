@@ -40,10 +40,10 @@ const HOME_STEP_TEXT: [string, string, string, string][] = [
 type Rect = { left: number; top: number; width: number; height: number }
 const R = (left: number, top: number, width: number, height: number): Rect => ({ left: left - 1, top: top - 1, width, height })
 const SCENE = {
-  washHold: R(69.45, -14.73, 218.43, 159.86),
+  washHold: R(69.69, -15.07, 219.43, 160.75),
   washPush: R(69.5, -14.3, 217.3, 155.13),
-  boxOpen: R(77.82, -22.5, 193.68, 162.57),
-  boxClosed: R(77.85, -22.48, 183.77, 163.51),
+  boxOpen: R(77.82, -22.68, 193.33, 161.49),
+  boxClosed: R(77.64, -24.11, 183.31, 163.1),
   truck: R(70.16, -21.75, 218.3, 163.44),
 }
 

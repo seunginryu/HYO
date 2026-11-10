@@ -260,40 +260,44 @@
   display: block;
   max-width: none;
 }
-/* 전환: 들어오는 그림이 위에서 서서히 나타난 뒤(0.5초), 아래 그림이 서서히 사라짐(0.5초)
-   → 두 그림이 함께 반투명해지며 깜빡이던 느낌 없이 부드럽게 (사용자 요청) */
-/* 세탁 중 (3.6초 반복): 이불 들기(a) → 세탁기에 넣기(b) → 다시 들기 */
-.home-scene--wash .home-scene__a { animation: wash-a 3.6s ease-in-out infinite; }
-.home-scene--wash .home-scene__b { animation: wash-b 3.6s ease-in-out infinite; }
+/* 전환 (두 단계만 보이게): 사용자가 같은 캔버스에 맞춰 준 두 그림을 같은 자리에 겹치고,
+   들어오는 그림이 위에서 0.3초 동안 나타나는 동안 아래 그림도 거의 함께 사라짐 */
+/* 세탁 중 (3.2초 반복): 이불 들기(a) → 세탁기에 넣기(b) */
+.home-scene--wash .home-scene__a { animation: wash-a 3.2s ease-in-out infinite; }
+.home-scene--wash .home-scene__b { animation: wash-b 3.2s ease-in-out infinite; }
 @keyframes wash-a {
   0% { opacity: 1; z-index: 1; }
-  44% { opacity: 1; z-index: 1; }
-  58% { opacity: 0; z-index: 1; }
-  80% { opacity: 0; z-index: 3; }
-  94% { opacity: 1; z-index: 3; }
+  42% { opacity: 1; z-index: 1; }
+  51% { opacity: 0; z-index: 1; }
+  89.9% { opacity: 0; z-index: 1; }
+  90% { opacity: 0; z-index: 3; }
+  99% { opacity: 1; z-index: 3; }
   100% { opacity: 1; z-index: 3; }
 }
 @keyframes wash-b {
-  0%, 30% { opacity: 0; z-index: 2; }
-  44% { opacity: 1; }
-  94% { opacity: 1; }
+  0% { opacity: 0; z-index: 2; }
+  40% { opacity: 0; }
+  49% { opacity: 1; }
+  92% { opacity: 1; }
   100% { opacity: 0; z-index: 2; }
 }
-/* 포장 중 (2.4초 반복): 열린 상자(a)를 짧게 → 닫힌 상자(b). 데모에서 포장 단계가 2.5초라 일찍 닫음 */
+/* 포장 중 (2.4초 반복): 열린 상자(a)를 짧게 → 닫힌 상자(b). 데모의 포장 단계가 2.5초라 일찍 닫음 */
 .home-scene--box .home-scene__a { animation: box-a 2.4s ease-in-out infinite; }
 .home-scene--box .home-scene__b { animation: box-b 2.4s ease-in-out infinite; }
 @keyframes box-a {
   0% { opacity: 1; z-index: 1; }
-  30% { opacity: 1; z-index: 1; }
-  48% { opacity: 0; z-index: 1; }
-  78% { opacity: 0; z-index: 3; }
-  94% { opacity: 1; z-index: 3; }
+  10% { opacity: 1; z-index: 1; }
+  22% { opacity: 0; z-index: 1; }
+  87.9% { opacity: 0; z-index: 1; }
+  88% { opacity: 0; z-index: 3; }
+  98% { opacity: 1; z-index: 3; }
   100% { opacity: 1; z-index: 3; }
 }
 @keyframes box-b {
-  0%, 10% { opacity: 0; z-index: 2; }
-  30% { opacity: 1; }
-  94% { opacity: 1; }
+  0% { opacity: 0; z-index: 2; }
+  8% { opacity: 0; }
+  20% { opacity: 1; }
+  90% { opacity: 1; }
   100% { opacity: 0; z-index: 2; }
 }
 /* 배송 중: 트럭 살짝 흔들림 + 뒤쪽 연한 바람 선 (트럭은 왼쪽을 봄 → 바람은 오른쪽으로) */
