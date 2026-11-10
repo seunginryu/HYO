@@ -267,45 +267,42 @@
   display: block;
   max-width: none;
 }
-/* 전환 (두 단계만 보이게): 사용자가 같은 캔버스에 맞춰 준 두 그림을 같은 자리에 겹치고,
-   들어오는 그림이 위에서 0.3초 동안 나타나는 동안 아래 그림도 거의 함께 사라짐 */
-/* 세탁 중 (3.2초 반복): 이불 들기(a) → 세탁기에 넣기(b) */
-.home-scene--wash .home-scene__a { animation: wash-a 3.2s ease-in-out infinite; }
-.home-scene--wash .home-scene__b { animation: wash-b 3.2s ease-in-out infinite; }
+/* 전환: 두 그림의 투명도를 서로 반대로(합이 항상 1) 바꾸고, 위 그림을 plus-lighter로 더함.
+   일반 겹치기는 전환 중간에 두 그림이 모두 반투명해져 배경이 비치며 깜빡였음.
+   plus-lighter는 같은 자리의 같은 픽셀이 그대로 100%로 보여서(세탁기·몸통 등 안 움직이는 부분),
+   움직이는 부분만 자연스럽게 바뀜 (브라우저 화면 전환 기본 방식과 같은 원리) */
+.home-scene--wash,
+.home-scene--box {
+  isolation: isolate;
+}
+.home-scene__b {
+  mix-blend-mode: plus-lighter;
+}
+/* 세탁 중 (3.2초 반복): 이불 들기(a) ⇄ 세탁기에 넣기(b), 전환 0.5초 */
+.home-scene--wash .home-scene__a { animation: wash-a 3.2s linear infinite; }
+.home-scene--wash .home-scene__b { animation: wash-b 3.2s linear infinite; }
 @keyframes wash-a {
-  0% { opacity: 1; z-index: 1; }
-  42% { opacity: 1; z-index: 1; }
-  51% { opacity: 0; z-index: 1; }
-  89.9% { opacity: 0; z-index: 1; }
-  90% { opacity: 0; z-index: 3; }
-  99% { opacity: 1; z-index: 3; }
-  100% { opacity: 1; z-index: 3; }
+  0%, 38% { opacity: 1; animation-timing-function: ease-in-out; }
+  54%, 84% { opacity: 0; animation-timing-function: ease-in-out; }
+  100% { opacity: 1; }
 }
 @keyframes wash-b {
-  0% { opacity: 0; z-index: 2; }
-  40% { opacity: 0; }
-  49% { opacity: 1; }
-  92% { opacity: 1; }
-  100% { opacity: 0; z-index: 2; }
+  0%, 38% { opacity: 0; animation-timing-function: ease-in-out; }
+  54%, 84% { opacity: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 0; }
 }
 /* 포장 중 (2.4초 반복): 열린 상자(a)를 짧게 → 닫힌 상자(b). 데모의 포장 단계가 2.5초라 일찍 닫음 */
-.home-scene--box .home-scene__a { animation: box-a 2.4s ease-in-out infinite; }
-.home-scene--box .home-scene__b { animation: box-b 2.4s ease-in-out infinite; }
+.home-scene--box .home-scene__a { animation: box-a 2.4s linear infinite; }
+.home-scene--box .home-scene__b { animation: box-b 2.4s linear infinite; }
 @keyframes box-a {
-  0% { opacity: 1; z-index: 1; }
-  10% { opacity: 1; z-index: 1; }
-  22% { opacity: 0; z-index: 1; }
-  87.9% { opacity: 0; z-index: 1; }
-  88% { opacity: 0; z-index: 3; }
-  98% { opacity: 1; z-index: 3; }
-  100% { opacity: 1; z-index: 3; }
+  0%, 6% { opacity: 1; animation-timing-function: ease-in-out; }
+  26%, 82% { opacity: 0; animation-timing-function: ease-in-out; }
+  100% { opacity: 1; }
 }
 @keyframes box-b {
-  0% { opacity: 0; z-index: 2; }
-  8% { opacity: 0; }
-  20% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; z-index: 2; }
+  0%, 6% { opacity: 0; animation-timing-function: ease-in-out; }
+  26%, 82% { opacity: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 0; }
 }
 /* 배송 중: 트럭 살짝 흔들림 + 뒤쪽 연한 바람 선 (트럭은 왼쪽을 봄 → 바람은 오른쪽으로) */
 .home-truck__body {
