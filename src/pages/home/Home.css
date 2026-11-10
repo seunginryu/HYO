@@ -214,22 +214,23 @@
 
 /* 이용 후: 진행 카드 */
 .home-progress {
-  /* 11-10 사용자 시안: 그림 위 · 제목/설명 가운데 · 단계바 · 사진 보기 (세로 배치) */
+  /* 11-10 Figma '신청 후 홈 화면 수정': 358×322, 그림이 카드 위로 살짝 튀어나옴 */
   margin-top: 21px;
-  height: 320.5px;
+  height: 322px;
   padding: 0;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
 }
 .home-progress__title {
   position: absolute;
   left: 0;
   right: 0;
-  top: 151.5px;
+  top: 153px;
   font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, sans-serif;
-  font-size: 18.6px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 21px;
+  letter-spacing: 0;
   color: #000;
 }
 .home-progress__title span {
@@ -240,102 +241,92 @@
   left: 0;
   right: 0;
   top: 180px;
-  font-size: 14.7px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 19.5px;
+  line-height: 20px;
   color: var(--brand-navy);
 }
-.home-progress__img {
-  position: absolute;
-  left: 78.5px;
-  top: -16px;
-  width: 112px;
-  height: 84px;
-  /* 112×84 자리 좌표는 그대로 두고 1.95배 확대 (이미지는 640px 원본이라 선명) */
-  transform: scale(1.95);
-  transform-origin: 0 0;
-  /* 그림 배경(거의 흰색)이 카드와 섞이게 */
-  mix-blend-mode: multiply;
-  isolation: isolate;
-}
-/* 포장 중: 캐릭터+상자가 세로로 길어 카드 위에서 잘리지 않게 조금 작게 (머리 위 2, 아래 135) */
-.home-progress .home-progress__img--box {
-  left: 86px;
-  top: -1.5px;
-  transform: scale(1.64);
-}
-.home-progress__img img {
+
+/* 장면: 카드 기준 절대 위치, 투명 PNG(WebP, 3배 해상도) */
+.home-scene {
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.home-scene img {
+  position: absolute;
   display: block;
+  max-width: none;
 }
-/* 2.4초 반복: 이불 들기 → 밀어 넣기 → 다시 들기 */
-.home-progress__push {
-  animation: progress-push 2.4s ease-in-out infinite;
+/* 세탁 중 (2.4초 반복): 이불 들기(a) → 세탁기에 넣기(b) → 다시 들기. 투명이라 겹치지 않게 서로 반대로 페이드 */
+.home-scene--wash .home-scene__a { animation: scene-a 2.4s ease-in-out infinite; }
+.home-scene--wash .home-scene__b { animation: scene-b 2.4s ease-in-out infinite; }
+@keyframes scene-a {
+  0%, 40% { opacity: 1; }
+  48%, 90% { opacity: 0; }
+  98%, 100% { opacity: 1; }
 }
-@keyframes progress-push {
-  0%, 38% { opacity: 0; }
-  48%, 88% { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes scene-b {
+  0%, 40% { opacity: 0; }
+  48%, 90% { opacity: 1; }
+  98%, 100% { opacity: 0; }
 }
-/* 포장 중: 상자 접기. 데모에서 포장 단계가 2.5초라 열린 상자를 짧게 보여주고 바로 접음 */
-.home-progress__push--box {
-  animation-name: progress-box;
+/* 포장 중: 열린 상자(a) 잠깐 → 닫힌 상자(b). 데모에서 포장 단계가 2.5초라 짧게 열어 두고 닫음 */
+.home-scene--box .home-scene__a { animation: box-a 2.4s ease-in-out infinite; }
+.home-scene--box .home-scene__b { animation: box-b 2.4s ease-in-out infinite; }
+@keyframes box-a {
+  0%, 15% { opacity: 1; }
+  25%, 85% { opacity: 0; }
+  95%, 100% { opacity: 1; }
 }
-@keyframes progress-box {
+@keyframes box-b {
   0%, 15% { opacity: 0; }
   25%, 85% { opacity: 1; }
-  100% { opacity: 0; }
+  95%, 100% { opacity: 0; }
 }
-/* 배송 시작: 트럭 흔들림 + 뒤쪽 바람 선 (오른쪽으로 흐름, 연한 회색) */
+/* 배송 중: 트럭 살짝 흔들림 + 뒤쪽 연한 바람 선 (트럭은 왼쪽을 봄 → 바람은 오른쪽으로) */
+.home-truck__body {
+  transform-origin: 30% 100%;
+  animation: truck-bob 0.4s ease-in-out infinite alternate;
+}
+@keyframes truck-bob {
+  from { transform: translateY(0) rotate(-0.35deg); }
+  to { transform: translateY(-0.8px) rotate(-0.75deg); }
+}
 .home-truck__wind {
   position: absolute;
-  left: 105px;
+  left: 290px;
   height: 2px;
   border-radius: 1px;
   background: #E4E4E4;
   opacity: 0;
   animation: truck-wind 0.9s ease-out infinite;
 }
-.home-truck__wind--1 { top: 33px; width: 10px; }
-.home-truck__wind--2 { top: 46px; width: 13px; animation-delay: 0.3s; }
-.home-truck__wind--3 { top: 59px; width: 9px; animation-delay: 0.6s; }
+.home-truck__wind--1 { top: 44px; width: 14px; }
+.home-truck__wind--2 { top: 66px; width: 18px; animation-delay: 0.3s; }
+.home-truck__wind--3 { top: 88px; width: 12px; animation-delay: 0.6s; }
 @keyframes truck-wind {
-  0% { opacity: 0; transform: translateX(-6px); }
+  0% { opacity: 0; transform: translateX(-8px); }
   30% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(6px); }
-}
-.home-truck .home-truck__body {
-  position: absolute;
-  left: 2px;
-  top: 20px;
-  width: 102px;
-  height: 51px;
-  transform-origin: 30% 100%;
-  animation: truck-bob 0.4s ease-in-out infinite alternate;
-}
-@keyframes truck-bob {
-  from { transform: translateY(0) rotate(0deg); }
-  to { transform: translateY(-0.5px) rotate(-0.3deg); }
+  100% { opacity: 0; transform: translateX(8px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-truck__body, .home-truck__wind { animation: none; }
+  .home-scene img, .home-truck__wind { animation: none; }
+  .home-scene__a { opacity: 0; }
   .home-truck__wind { opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .home-progress__push { animation: none; opacity: 1; }
 }
 .home-progress__bar {
   position: absolute;
-  left: 19.5px;
-  top: 233px;
+  left: 19px;
+  top: 234px;
 }
 .home-progress__more {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 44px;
+  height: 45px;
   border-top: 1px solid var(--box-stroke);
   font-size: 15px;
   font-weight: 700;

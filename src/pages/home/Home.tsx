@@ -14,11 +14,11 @@ import bannerGradient from '../../assets/home/banner_gradient.png'
 import basketEmpty from '../../assets/basket/basket_empty.png'
 import basketHalf from '../../assets/basket/basket_half_dirt.png'
 import basketFull from '../../assets/basket/basket_full_dirt.png'
-import progressCharacter from '../../assets/char/character_progress.jpg'
-import progressCharacter2 from '../../assets/char/character_progress2.jpg'
-import boxOpen from '../../assets/char/character_box_open.jpg'
-import boxClosed from '../../assets/char/character_box_closed.jpg'
-import truck from '../../assets/char/truck.jpg'
+import washHold from '../../assets/char/new/wash_hold.webp'
+import washPush from '../../assets/char/new/wash_push.webp'
+import boxOpen from '../../assets/char/new/box_open.webp'
+import boxClosed from '../../assets/char/new/box_closed.webp'
+import truck from '../../assets/char/new/truck.webp'
 import spaceKit from '../../assets/home/space_kit.png'
 import spaceBlanket from '../../assets/home/space_blanket.png'
 import './Home.css'
@@ -28,12 +28,24 @@ const HOME_STEPS = ['주문접수', '세탁중', '포장중', '배송시작']
 const HOME_STEP_POS = [35.5, 121.5, 199.5, 277.5]
 const toHomeStep = (step: number) => (step <= 1 ? 0 : step - 1)
 /** 단계별 문구: [강조, 어미, 두 번째 줄] */
-const HOME_STEP_TEXT: [string, string, string][] = [
-  ['접수 완료', '예요!', '곧 세탁물을 가지러 가요.'],
-  ['세탁 중', '이에요!', '깨끗이 빨고 있어요.'],
-  ['포장 중', '이에요!', '꼼꼼하게 포장하고 있어요.'],
-  ['배송 시작', '이에요!', '부모님 댁으로 가고 있어요.'],
+/** [강조, 뒷말, 설명 첫 줄, 설명 둘째 줄] — 11-10 Figma '신청 후 홈 화면 수정' */
+const HOME_STEP_TEXT: [string, string, string, string][] = [
+  ['접수 완료', '예요!', '부모님께서 안심할 수 있도록', '곧 세탁물을 가지러 가요.'],
+  ['세탁 중', '이에요!', '부모님께서 안심할 수 있도록', '깨끗이 빨고 있어요.'],
+  ['포장 중', '이에요!', '부모님께서 안심할 수 있도록', '깔끔하고 꼼꼼하게 포장하고 있어요.'],
+  ['배송 중', '이에요!', '깨끗해진 부모님의 이불을', '빠르게 전해드릴게요.'],
 ]
+
+/** 진행 카드 그림 자리 (카드 왼쪽 위 기준 pt, Figma에서 잰 값 · 카드 테두리 1 제외) */
+type Rect = { left: number; top: number; width: number; height: number }
+const R = (left: number, top: number, width: number, height: number): Rect => ({ left: left - 1, top: top - 1, width, height })
+const SCENE = {
+  washHold: R(70.27, -15.46, 221.75, 162.3),
+  washPush: R(69.5, -14.3, 217.3, 155.13),
+  boxOpen: R(77.82, -22.5, 193.68, 162.57),
+  boxClosed: R(77.82, -22.5, 183.31, 163.1),
+  truck: R(70.16, -21.75, 218.3, 163.44),
+}
 
 const pad2 = (n: number) => String(n).padStart(2, '0')
 
@@ -213,28 +225,29 @@ export default function Home() {
                 내 효도는 <span>{HOME_STEP_TEXT[homeStep][0]}</span>{HOME_STEP_TEXT[homeStep][1]}
               </h2>
               <p className="home-progress__desc">
-                부모님께서 안심할 수 있도록
-                <br />
                 {HOME_STEP_TEXT[homeStep][2]}
+                <br />
+                {HOME_STEP_TEXT[homeStep][3]}
               </p>
-              {/* 두 장면 반복: 포장 중엔 상자를 열었다 접고(박스 보이 → 박스보이2), 그 외엔 이불을 들었다(캐릭터2) 세탁기에 밀어 넣음(캐릭터) */}
+              {/* 장면 (Figma 위치·크기 그대로, 투명 PNG) — 세탁 중: 이불 들기 → 넣기 / 포장 중: 상자 닫기 / 배송 중: 흔들리며 달리는 트럭 */}
               {inProgress!.step >= 4 ? (
-                // 배송 시작: 트럭이 달리는 느낌 (차체 흔들림 + 뒤쪽 연한 바람 선, 도로 점선은 사용자 요청으로 없음)
-                <span key="truck" className="home-progress__img home-truck" aria-hidden>
+                <span key="truck" className="home-scene home-scene--truck" aria-hidden>
                   <span className="home-truck__wind home-truck__wind--1" />
                   <span className="home-truck__wind home-truck__wind--2" />
                   <span className="home-truck__wind home-truck__wind--3" />
-                  <img className="home-truck__body" src={truck} width={102} height={51} alt="" />
+                  <img className="home-truck__body" src={truck} style={SCENE.truck} alt="" />
                 </span>
-              ) : (() => {
-                const packing = inProgress!.step === 3
-                return (
-                  <span key={packing ? 'box' : 'wash'} className={`home-progress__img ${packing ? 'home-progress__img--box' : ''}`} aria-hidden>
-                    <img src={packing ? boxOpen : progressCharacter2} width={112} height={84} alt="" />
-                    <img className={packing ? 'home-progress__push home-progress__push--box' : 'home-progress__push'} src={packing ? boxClosed : progressCharacter} width={112} height={84} alt="" />
-                  </span>
-                )
-              })()}
+              ) : inProgress!.step === 3 ? (
+                <span key="box" className="home-scene home-scene--box" aria-hidden>
+                  <img className="home-scene__a" src={boxOpen} style={SCENE.boxOpen} alt="" />
+                  <img className="home-scene__b" src={boxClosed} style={SCENE.boxClosed} alt="" />
+                </span>
+              ) : (
+                <span key="wash" className="home-scene home-scene--wash" aria-hidden>
+                  <img className="home-scene__a" src={washHold} style={SCENE.washHold} alt="" />
+                  <img className="home-scene__b" src={washPush} style={SCENE.washPush} alt="" />
+                </span>
+              )}
               <div className="home-progress__bar">
                 <StepBar labels={HOME_STEPS} current={homeStep} positions={HOME_STEP_POS} />
               </div>
