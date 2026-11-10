@@ -13,6 +13,7 @@ import Splash from './pages/onboarding/Splash'
 import Home from './pages/home/Home'
 import ApplyForm from './pages/apply/ApplyForm'
 import ApplyContact from './pages/apply/ApplyContact'
+import ApplyCall from './pages/apply/ApplyCall'
 import ApplyWait from './pages/apply/ApplyWait'
 import ApplyConfirm from './pages/apply/ApplyConfirm'
 import ApplyPay from './pages/apply/ApplyPay'
@@ -43,6 +44,7 @@ export default function App() {
           {/* C. 세탁 신청 */}
           <Route path="/apply" element={<ApplyForm />} />
           <Route path="/apply/contact" element={<ApplyContact />} />
+          <Route path="/apply/call" element={<ApplyCall />} />
           <Route path="/apply/wait" element={<ApplyWait />} />
           <Route path="/apply/confirm" element={<ApplyConfirm />} />
           <Route path="/apply/pay" element={<ApplyPay />} />

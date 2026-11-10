@@ -59,8 +59,7 @@ export default function ApplyContact() {
             <br />
             이 핑계로 부모님께 전화드리는 건 어때요?
           </p>
-          {/* 전화 연결 화면이 없어서 지금은 눌러도 반응하지 않음 */}
-          <p className="c21__call" aria-disabled>전화로 확인하기</p>
+          <button type="button" className="c21__call" onClick={() => navigate('/apply/call')}>전화로 확인하기</button>
         </div>
       </Modal>
     </ApplyLayout>

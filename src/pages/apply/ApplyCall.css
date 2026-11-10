@@ -1,0 +1,98 @@
+/* 아이폰 발신 화면을 본뜬 가짜 통화 화면 (아이콘은 직접 그린 SVG) */
+.call {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  width: 100%;
+  max-width: var(--screen-w);
+  margin: 0 auto;
+  overflow: hidden;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+  letter-spacing: 0;
+  background: #1c1c1e;
+  animation: call-in 0.35s ease-out both;
+}
+.call.is-ending { animation: call-out 0.5s 0.2s ease-in both; }
+@keyframes call-in { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: none; } }
+@keyframes call-out { to { opacity: 0; } }
+
+.call__bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(60% 45% at 25% 20%, rgba(39, 123, 209, 0.55), transparent 70%),
+    radial-gradient(55% 40% at 80% 35%, rgba(30, 58, 94, 0.7), transparent 70%),
+    radial-gradient(70% 50% at 50% 95%, rgba(20, 20, 24, 1), transparent 70%),
+    linear-gradient(180deg, #2b3542 0%, #1d2129 55%, #141518 100%);
+  filter: blur(30px) saturate(1.1);
+}
+
+.call__top {
+  position: relative;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 92px);
+  text-align: center;
+}
+.call__status {
+  font-size: 17px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.62);
+  font-variant-numeric: tabular-nums;
+}
+.call__name {
+  margin-top: 4px;
+  font-size: 34px;
+  line-height: 41px;
+  font-weight: 400;
+}
+
+.call__pad {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 70px);
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 78px);
+  column-gap: 30px;
+  row-gap: 22px;
+}
+.call__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.call__btn,
+.call__end {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  transition: background-color 0.18s, color 0.18s, transform 0.12s;
+}
+.call__btn {
+  --call-slash: #4a4a4c;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.call__btn.is-on {
+  --call-slash: #fff;
+  color: #1c1c1e;
+  background: #fff;
+}
+.call__btn:active,
+.call__end:active { transform: scale(0.94); }
+.call__btn:active:not(.is-on) { background: rgba(255, 255, 255, 0.34); }
+.call__end {
+  color: #fff;
+  background: #eb4e3d;
+}
+.call__end:active { background: #c93f30; }
+.call__label {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+}

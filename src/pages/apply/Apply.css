@@ -150,7 +150,8 @@
   font-size: 15px;
   letter-spacing: 0;
   color: var(--brand-blue);
-  cursor: default;
+  width: 100%;
+  cursor: pointer;
   user-select: none;
 }
 
