@@ -14,11 +14,11 @@ import bannerGradient from '../../assets/home/banner_gradient.png'
 import basketEmpty from '../../assets/basket/basket_empty.png'
 import basketHalf from '../../assets/basket/basket_half_dirt.png'
 import basketFull from '../../assets/basket/basket_full_dirt.png'
-import progressCharacter from '../../assets/char/character_progress.png'
-import progressCharacter2 from '../../assets/char/character_progress2.png'
-import boxOpen from '../../assets/char/character_box_open.png'
-import boxClosed from '../../assets/char/character_box_closed.png'
-import truck from '../../assets/char/truck.png'
+import progressCharacter from '../../assets/char/character_progress.jpg'
+import progressCharacter2 from '../../assets/char/character_progress2.jpg'
+import boxOpen from '../../assets/char/character_box_open.jpg'
+import boxClosed from '../../assets/char/character_box_closed.jpg'
+import truck from '../../assets/char/truck.jpg'
 import spaceKit from '../../assets/home/space_kit.png'
 import spaceBlanket from '../../assets/home/space_blanket.png'
 import './Home.css'
@@ -229,7 +229,7 @@ export default function Home() {
               ) : (() => {
                 const packing = inProgress!.step === 3
                 return (
-                  <span key={packing ? 'box' : 'wash'} className="home-progress__img" aria-hidden>
+                  <span key={packing ? 'box' : 'wash'} className={`home-progress__img ${packing ? 'home-progress__img--box' : ''}`} aria-hidden>
                     <img src={packing ? boxOpen : progressCharacter2} width={112} height={84} alt="" />
                     <img className={packing ? 'home-progress__push home-progress__push--box' : 'home-progress__push'} src={packing ? boxClosed : progressCharacter} width={112} height={84} alt="" />
                   </span>

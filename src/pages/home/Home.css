@@ -214,14 +214,20 @@
 
 /* 이용 후: 진행 카드 */
 .home-progress {
+  /* 11-10 사용자 시안: 그림 위 · 제목/설명 가운데 · 단계바 · 사진 보기 (세로 배치) */
   margin-top: 21px;
-  height: 201.5px;
-  /* 내용 묶음(글·그림·단계바, 가로 20~332)을 카드 가운데로: 전체를 오른쪽으로 3 */
-  padding: 20px 23px 0 29px;
+  height: 320.5px;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
 }
 .home-progress__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 151.5px;
   font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, sans-serif;
-  font-size: 19px;
+  font-size: 18.6px;
   font-weight: 700;
   line-height: 24px;
   color: #000;
@@ -230,21 +236,33 @@
   color: var(--brand-blue);
 }
 .home-progress__desc {
-  margin-top: 10px;
-  font-size: 15px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 180px;
+  font-size: 14.7px;
   font-weight: 400;
   line-height: 19.5px;
   color: var(--brand-navy);
 }
 .home-progress__img {
   position: absolute;
-  left: 222px;
-  top: 16px;
+  left: 78.5px;
+  top: -16px;
   width: 112px;
   height: 84px;
+  /* 112×84 자리 좌표는 그대로 두고 1.95배 확대 (이미지는 640px 원본이라 선명) */
+  transform: scale(1.95);
+  transform-origin: 0 0;
   /* 그림 배경(거의 흰색)이 카드와 섞이게 */
   mix-blend-mode: multiply;
   isolation: isolate;
+}
+/* 포장 중: 캐릭터+상자가 세로로 길어 카드 위에서 잘리지 않게 조금 작게 (머리 위 2, 아래 135) */
+.home-progress .home-progress__img--box {
+  left: 86px;
+  top: -1.5px;
+  transform: scale(1.64);
 }
 .home-progress__img img {
   position: absolute;
@@ -309,8 +327,8 @@
 }
 .home-progress__bar {
   position: absolute;
-  left: 22px;
-  top: 107.5px;
+  left: 19.5px;
+  top: 233px;
 }
 .home-progress__more {
   position: absolute;
