@@ -597,3 +597,35 @@
 .c41__cost .c41__title {
   padding-left: 2.5px;
 }
+
+/* C-3 → C-3-1 → C-3-2 → C-3-3: '홈으로 이동하여 대기 >'를 누를 때마다
+   편지 쓰기 버튼이 좌우로 흔들리며 위로 커짐 (폭·아래 위치 그대로, 크기는 캡처에서 측정) */
+.btn.c3__nag {
+  transition: height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), font-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s, color 0.3s, box-shadow 0.3s, filter 0.15s;
+}
+.btn.c3__nag--1 { height: 62px; font-size: 18px; }
+.btn.c3__nag--2,
+.btn.c3__nag--3 { height: 69px; font-size: 19px; }
+.btn.c3__nag--3 { box-shadow: 0 0 25px rgba(218, 230, 51, 0.35); }
+.btn.c3__nag.is-shakeA { animation: c3-shakeA 0.5s ease-out; }
+.btn.c3__nag.is-shakeB { animation: c3-shakeB 0.5s ease-out; }
+@keyframes c3-shakeA {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px) rotate(-1deg); }
+  30% { transform: translateX(7px) rotate(1deg); }
+  45% { transform: translateX(-5px) rotate(-0.6deg); }
+  60% { transform: translateX(4px) rotate(0.4deg); }
+  78% { transform: translateX(-2px); }
+}
+@keyframes c3-shakeB {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px) rotate(-1deg); }
+  30% { transform: translateX(7px) rotate(1deg); }
+  45% { transform: translateX(-5px) rotate(-0.6deg); }
+  60% { transform: translateX(4px) rotate(0.4deg); }
+  78% { transform: translateX(-2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn.c3__nag.is-shakeA, .btn.c3__nag.is-shakeB { animation: none; }
+}

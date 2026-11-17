@@ -36,6 +36,13 @@ export default function ApplyWait() {
   const [d, setD] = useState(getDraft)
   // 응답 도착 시각이 지났는지 (실제 화면 전환은 편지를 다 쓴 뒤)
   const [due, setDue] = useState(() => hasResponse(getDraft()))
+  // '홈으로 이동하여 대기 >'를 누를 때마다 편지 쓰기 버튼이 흔들리며 커짐 (C-3 → C-3-1 → C-3-2 → C-3-3)
+  const [nag, setNag] = useState(0)
+  const [shake, setShake] = useState(0)
+  const nudge = () => {
+    setNag((n) => Math.min(3, n + 1))
+    setShake((k) => k + 1)
+  }
   const [sheet, setSheet] = useState<null | 'paper' | 'write' | 'response'>(null)
   const [paper, setPaper] = useState<Letter['paper'] | null>(null)
   const [text, setText] = useState('')
@@ -100,7 +107,8 @@ export default function ApplyWait() {
     <ApplyLayout title="부모님 응답 대기" step={3} labelBlue onBack={() => navigate('/apply/contact')}
       cta={arrived
         ? <Button onClick={() => navigate('/apply/confirm')}>다음 단계</Button>
-        : <Button onClick={startLetter}>편지 쓰기</Button>}>
+        : <Button onClick={startLetter} variant={nag >= 3 ? 'lime' : 'primary'}
+            className={`c3__nag c3__nag--${nag}${shake ? (shake % 2 ? ' is-shakeA' : ' is-shakeB') : ''}`}>편지 쓰기</Button>}>
       {!arrived ? (
         <div className="c3">
           <h2 className="c3__head">앗!</h2>
@@ -120,8 +128,8 @@ export default function ApplyWait() {
           </div>
           <p className="c3__q">기다리는 동안 편지를 써볼까요?</p>
           <p className="c3__qs">{d.letterId ? '편지를 저장했어요. 다시 눌러 고칠 수 있어요' : '편지는 건너뛰어도 괜찮아요'}</p>
-          {/* 사용자 요청: 눌러도 이동하지 않음 */}
-          <button className="c3__home" type="button">홈으로 이동하여 대기 &gt;</button>
+          {/* 홈으로 가지 않고, 편지 쓰기를 권하듯 아래 버튼을 흔들며 키움 */}
+          <button className="c3__home" type="button" onClick={nudge}>홈으로 이동하여 대기 &gt;</button>
         </div>
       ) : (
         <div className="c3 c3--arrived">
