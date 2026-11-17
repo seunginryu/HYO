@@ -629,3 +629,7 @@
 @media (prefers-reduced-motion: reduce) {
   .btn.c3__nag.is-shakeA, .btn.c3__nag.is-shakeB { animation: none; }
 }
+
+/* C-2: 설문을 보낸 뒤에 나타나는 '다음 단계' */
+.btn.c2__next { animation: c2-next-in 0.35s ease-out both; }
+@keyframes c2-next-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

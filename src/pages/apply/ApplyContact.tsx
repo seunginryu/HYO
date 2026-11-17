@@ -28,7 +28,7 @@ export default function ApplyContact() {
 
   return (
     <ApplyLayout title="세탁 신청" step={2} onBack={() => navigate('/apply')}
-      cta={<Button onClick={() => (getDraft().sentAt ? navigate('/apply/wait') : send('sms'))}>다음 단계</Button>}>
+      cta={(sent || d.sentAt) ? <Button className="c2__next" onClick={() => navigate('/apply/wait')}>다음 단계</Button> : undefined}>
       <div className="c2">
         <div className="c2__who">
           <p className="c2__name">{d.parentName || '김엄마'}</p>
@@ -39,6 +39,7 @@ export default function ApplyContact() {
           <br />
           희망하시는 수거 일정을 여쭙습니다.
         </p>
+        {/* '다음 단계'는 문자·카카오톡으로 보낸 뒤(팝업이 뜬 뒤)에만 나타남 */}
         <p className="c2__ask">이 번호가 맞나요?</p>
         <div className="c2__opts">
           {/* 연락처 앱 연결 전: 눌러도 이동하지 않음 */}
