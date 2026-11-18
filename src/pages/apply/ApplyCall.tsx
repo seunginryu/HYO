@@ -26,7 +26,7 @@ export default function ApplyCall() {
   const hangUp = () => {
     if (ending) return
     setEnding(true)
-    // 통화 후 C-2로 돌아온 시점부터 응답 대기 15초를 다시 셈
+    // 통화 후 C-2로 돌아온 시점부터 응답 대기 20초를 다시 셈
     restartWaiting()
     setTimeout(() => navigate('/apply/contact', { replace: true }), 700)
   }

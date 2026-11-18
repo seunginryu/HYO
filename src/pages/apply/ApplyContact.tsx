@@ -20,7 +20,7 @@ export default function ApplyContact() {
     markSent(via)
     setSent(via)
   }
-  // 팝업을 닫으면 C-3(응답 대기)부터 보여주고, 그때부터 15초 뒤 응답 도착
+  // 팝업을 닫으면 C-3(응답 대기)부터 보여주고, 그때부터 20초 뒤 응답 도착
   const goWait = () => {
     restartWaiting()
     navigate('/apply/wait')

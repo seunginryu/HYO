@@ -6,7 +6,7 @@ import { Button } from '../../components/Button'
 import { BubbleCharacter, FloatImage } from '../../components/Characters'
 import { Radio } from '../../components/Controls'
 import { BottomSheet } from '../../components/Overlay'
-import { DEMO_RESPONSE_MS, demoResponse, getDraft, getLetters, hasResponse, newId, saveDraft, saveLetter, type Letter } from '../../lib/apply'
+import { AFTER_LETTER_MS, DEMO_RESPONSE_MS, demoResponse, getDraft, getLetters, hasResponse, newId, saveDraft, saveLetter, type Letter } from '../../lib/apply'
 import waitChar from '../../assets/char/character_wait_body.png'
 import arriveChar from '../../assets/char/character_arrive.png'
 import checkBubble2 from '../../assets/char/bubble2_only.png'
@@ -69,9 +69,13 @@ export default function ApplyWait() {
   // 편지를 쓰는 동안(시트가 열려 있는 동안)은 화면을 바꾸지 않음
   const [arrived, setArrived] = useState(due)
   const writing = sheet === 'paper' || sheet === 'write'
+  // 편지를 저장하면 그때부터 1.5초 뒤에 응답 도착 (20초가 지났든 안 지났든)
+  const [hold, setHold] = useState(false)
+  const holdTimer = useRef<number>(0)
+  useEffect(() => () => clearTimeout(holdTimer.current), [])
   useEffect(() => {
-    if (due && !writing) setArrived(true)
-  }, [due, writing])
+    if (due && !writing && !hold) setArrived(true)
+  }, [due, writing, hold])
 
   // 편지 쓰기 시작: 이미 저장한 편지가 있으면 이어서 고침
   const startLetter = () => {
@@ -92,6 +96,17 @@ export default function ApplyWait() {
     saveDraft(next)
     setD(next)
     setSheet(null)
+    if (!arrived) {
+      setHold(true)
+      clearTimeout(holdTimer.current)
+      holdTimer.current = window.setTimeout(() => {
+        // 다시 들어와도 응답이 도착한 상태가 되도록 보낸 시각을 앞당겨 저장
+        const cur = getDraft()
+        saveDraft({ ...cur, sentAt: new Date(Date.now() - DEMO_RESPONSE_MS).toISOString() })
+        setDue(true)
+        setHold(false)
+      }, AFTER_LETTER_MS)
+    }
   }
 
   const pickPhoto = (f?: File) => {

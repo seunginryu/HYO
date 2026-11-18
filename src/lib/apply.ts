@@ -35,7 +35,10 @@ export type ApplyDraft = {
 const KEY = 'hyo.applyDraft'
 const LETTERS = 'hyo.letters'
 /** 데모: 설문을 보내고 이 시간이 지나면 부모님 응답이 도착한 것으로 처리 */
-export const DEMO_RESPONSE_MS = 15000
+/** 데모: 설문을 보낸 뒤 응답 도착까지 (편지를 안 쓸 때) */
+export const DEMO_RESPONSE_MS = 20000
+/** 데모: 편지를 다 쓰고 저장한 뒤 응답 도착까지 */
+export const AFTER_LETTER_MS = 1500
 
 const empty: ApplyDraft = { parentName: '', phone: '', zip: '', address: '', items: [] }
 
@@ -104,7 +107,7 @@ export function markSent(via: 'sms' | 'kakao') {
   return next
 }
 
-/** 응답 대기 시작 시각을 지금으로 (발송 완료 팝업을 닫는 순간부터 15초) */
+/** 응답 대기 시작 시각을 지금으로 (발송 완료 팝업을 닫는 순간부터 20초) */
 export function restartWaiting() {
   saveDraft({ ...getDraft(), sentAt: new Date().toISOString() })
 }
