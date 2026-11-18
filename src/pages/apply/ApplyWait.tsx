@@ -145,8 +145,7 @@ export default function ApplyWait() {
             </p>
           </div>
           <p className="c3__q">기다리는 동안 편지를 써볼까요?</p>
-          <p className="c3__qs">{d.letterId ? '편지를 저장했어요. 다시 눌러 고칠 수 있어요' : '편지는 건너뛰어도 괜찮아요'}</p>
-          {/* 홈으로 가지 않고, 편지 쓰기를 권하듯 아래 버튼을 흔들며 키움 */}
+          {/* '편지는 건너뛰어도 괜찮아요' 자리. 홈으로 가지 않고, 편지 쓰기를 권하듯 아래 버튼을 흔들며 키움 */}
           <button className="c3__home" type="button" onClick={nudge}>홈으로 이동하여 대기 &gt;</button>
         </div>
       ) : (
