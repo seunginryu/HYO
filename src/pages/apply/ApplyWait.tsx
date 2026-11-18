@@ -15,6 +15,9 @@ import paperLime from '../../assets/letter/paper_lime.svg'
 import paperNavy from '../../assets/letter/paper_navy.svg'
 import './Apply.css'
 
+// '홈으로 이동하여 대기 >'를 누른 횟수별로 버튼 위에 뜨는 문구
+const NAG_MSG = ['앗, 정말 편지 안쓰세요?', '버튼이 안보이나 싶어서 크게 보여드려요!', '정말 이래도요?']
+
 const PAPERS = [
   { key: 'blue', label: '블루', src: paperBlue },
   { key: 'lime', label: '라임', src: paperLime },
@@ -107,8 +110,8 @@ export default function ApplyWait() {
     <ApplyLayout title="부모님 응답 대기" step={3} labelBlue onBack={() => navigate('/apply/contact')}
       cta={arrived
         ? <Button onClick={() => navigate('/apply/confirm')}>다음 단계</Button>
-        : <Button onClick={startLetter} variant={nag >= 3 ? 'lime' : 'primary'}
-            className={`c3__nag c3__nag--${nag}${shake ? (shake % 2 ? ' is-shakeA' : ' is-shakeB') : ''}`}>편지 쓰기</Button>}>
+        : <>{nag > 0 && <p key={shake} className={`c3__nagMsg c3__nagMsg--${nag}`} role="status">{NAG_MSG[nag - 1]}</p>}<Button onClick={startLetter} variant={nag >= 3 ? 'lime' : 'primary'}
+            className={`c3__nag c3__nag--${nag}${shake ? (shake % 2 ? ' is-shakeA' : ' is-shakeB') : ''}`}>편지 쓰기</Button></>}>
       {!arrived ? (
         <div className="c3">
           <h2 className="c3__head">앗!</h2>
